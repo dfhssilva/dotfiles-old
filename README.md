@@ -11,4 +11,5 @@ Versioning dotfiles for sync across environments
 # References
 
 [Move your dotfiles to version control](https://opensource.com/article/19/3/move-your-dotfiles-version-control)
+
 [Using GNU Stow to manage your dotfiles](http://brandon.invergo.net/news/2012-05-26-using-gnu-stow-to-manage-your-dotfiles.html)
