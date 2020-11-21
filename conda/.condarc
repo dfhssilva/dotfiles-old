@@ -1,0 +1,12 @@
+ssl_verify: true
+channels:
+  - defaults
+  - conda-forge
+create_default_packages:
+  - python
+  - pip
+  - scipy
+  - numpy
+  - matplotlib
+  - pandas
+auto_activate_base: true

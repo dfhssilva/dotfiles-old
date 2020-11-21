@@ -1,0 +1,23 @@
+[user]
+	name = David Silva
+	username = DavidSilva98
+	email = david.silva.silvestre@gmail.com
+[core]
+	editor = nano
+[difftool "nbdime"]
+	cmd = git-nbdifftool diff \"$LOCAL\" \"$REMOTE\" \"$BASE\"
+[difftool]
+	prompt = false
+[mergetool "nbdime"]
+	cmd = git-nbmergetool merge \"$BASE\" \"$LOCAL\" \"$REMOTE\" \"$MERGED\"
+[mergetool]
+	prompt = false
+[alias]
+	graph = log --graph --oneline --all
+[diff "jupyternotebook"]
+	command = git-nbdiffdriver diff
+[merge "jupyternotebook"]
+	driver = git-nbmergedriver merge %O %A %B %L %P
+	name = jupyter notebook merge driver
+[commit]
+	template = /home/davids/.gitmessage
