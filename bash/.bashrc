@@ -141,6 +141,9 @@ if [ -d "$HOME/.local/bin" ] ; then
     PATH="$HOME/.local/bin:$PATH"
 fi
 
+# aliases
+alias pycharm="pycharm-community"
+
 # add homebrew to path
 eval $(/home/linuxbrew/.linuxbrew/bin/brew shellenv)
 

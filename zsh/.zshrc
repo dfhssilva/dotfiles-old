@@ -117,3 +117,24 @@ else
 fi
 unset __conda_setup
 # <<< conda initialize <<<
+
+# set PATH so it includes user's private bin if it exists
+if [ -d "$HOME/bin" ] ; then
+    PATH="$HOME/bin:$PATH"
+fi
+
+# set PATH so it includes user's private bin if it exists
+if [ -d "$HOME/.local/bin" ] ; then
+    PATH="$HOME/.local/bin:$PATH"
+fi
+
+# aliases
+alias pycharm="pycharm-community"
+
+# add homebrew to path
+eval $(/home/linuxbrew/.linuxbrew/bin/brew shellenv)
+
+# cuda toolkit set up
+export PATH=/usr/local/cuda-11.1/bin${PATH:+:${PATH}}
+export LD_LIBRARY_PATH=/usr/local/cuda-11.1/lib64\
+                         ${LD_LIBRARY_PATH:+:${LD_LIBRARY_PATH}}
