@@ -130,6 +130,7 @@ fi
 
 # aliases
 alias pycharm="pycharm-community"
+alias watch-nvidia="watch -n 1 nvidia-smi"
 
 # add homebrew to path
 eval $(/home/linuxbrew/.linuxbrew/bin/brew shellenv)
