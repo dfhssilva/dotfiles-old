@@ -133,8 +133,17 @@ alias pycharm="pycharm-community"
 alias watch-nvidia="watch -n 1 nvidia-smi"
 
 # add homebrew to path
-eval $(/home/linuxbrew/.linuxbrew/bin/brew shellenv)
+# eval $(/home/linuxbrew/.linuxbrew/bin/brew shellenv)
 
 # cuda toolkit set up
 export PATH=/usr/local/cuda-11.1/bin${PATH:+:${PATH}}
 export LD_LIBRARY_PATH=/usr/local/cuda-11.1/lib64${LD_LIBRARY_PATH:+:${LD_LIBRARY_PATH}}
+
+# Prompt configurations
+PROMPT="%{$fg[white]%}%n@%{$fg[green]%}%m%{$reset_color%} ${PROMPT}"
+
+# Export WINHOME (useful in WSL)
+export WINHOME=$(wslpath "$(wslvar USERPROFILE)")
+
+# Export DISPLAY (useful in WSL)
+export DISPLAY=`grep -oP "(?<=nameserver ).+" /etc/resolv.conf`:0.0

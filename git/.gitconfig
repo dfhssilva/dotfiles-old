@@ -3,7 +3,7 @@
 	username = DavidSilva98
 	email = david.silva.silvestre@gmail.com
 [core]
-	editor = atom --wait
+	editor = code --wait
 [difftool "nbdime"]
 	cmd = git-nbdifftool diff \"$LOCAL\" \"$REMOTE\" \"$BASE\"
 [difftool]
