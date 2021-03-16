@@ -1,5 +1,5 @@
 # If you come from bash you might have to change your $PATH.
-export PATH=$HOME/bin:/usr/local/bin:$PATH
+# export PATH=$HOME/bin:/usr/local/bin:$PATH
 
 # Path to your oh-my-zsh installation.
 export ZSH="/home/davids/.oh-my-zsh"
@@ -102,6 +102,8 @@ source $ZSH/oh-my-zsh.sh
 # Example aliases
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
+alias jupyter_dark="jt -t onedork -fs 95 -tfs 11 -nfs 115 -cellw 88% -T"
+alias jupyter_light="jt -t grade3 -fs 95 -tfs 11 -nfs 115 -cellw 88% -T"
 
 # >>> conda initialize >>>
 # !! Contents within this block are managed by 'conda init' !!
@@ -119,25 +121,28 @@ unset __conda_setup
 # <<< conda initialize <<<
 
 # set PATH so it includes user's private bin if it exists
-if [ -d "$HOME/bin" ] ; then
-    PATH="$HOME/bin:$PATH"
-fi
+# if [ -d "$HOME/bin" ] ; then
+#     PATH="$HOME/bin:$PATH"
+# fi
 
 # set PATH so it includes user's private bin if it exists
 if [ -d "$HOME/.local/bin" ] ; then
     PATH="$HOME/.local/bin:$PATH"
 fi
 
+# If you come from bash you might have to change your $PATH.
+export PATH="$HOME/bin:/usr/local/bin:$PATH"
+
 # aliases
-alias pycharm="pycharm-community"
-alias watch-nvidia="watch -n 1 nvidia-smi"
+# alias pycharm="pycharm-community"
+# alias watch-nvidia="watch -n 1 nvidia-smi"
 
 # add homebrew to path
 # eval $(/home/linuxbrew/.linuxbrew/bin/brew shellenv)
 
 # cuda toolkit set up
-export PATH=/usr/local/cuda-11.1/bin${PATH:+:${PATH}}
-export LD_LIBRARY_PATH=/usr/local/cuda-11.1/lib64${LD_LIBRARY_PATH:+:${LD_LIBRARY_PATH}}
+# export PATH=/usr/local/cuda-11.1/bin${PATH:+:${PATH}}
+# export LD_LIBRARY_PATH=/usr/local/cuda-11.1/lib64${LD_LIBRARY_PATH:+:${LD_LIBRARY_PATH}}
 
 # Prompt configurations
 PROMPT="%{$fg[white]%}%n@%{$fg[green]%}%m%{$reset_color%} ${PROMPT}"

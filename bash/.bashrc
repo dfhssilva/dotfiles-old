@@ -142,14 +142,16 @@ if [ -d "$HOME/.local/bin" ] ; then
 fi
 
 # aliases
-alias pycharm="pycharm-community"
+# alias pycharm="pycharm-community"
+alias jupyter_dark="jt -t onedork -fs 95 -altp -tfs 11 -nfs 115 -cellw 88% -T"
+alias jupyter_light="jt -t grade3 -fs 95 -altp -tfs 11 -nfs 115 -cellw 88% -T"
 
 # add homebrew to path
 # eval $(/home/linuxbrew/.linuxbrew/bin/brew shellenv)
 
 # cuda toolkit set up
-export PATH=/usr/local/cuda-11.1/bin${PATH:+:${PATH}}
-export LD_LIBRARY_PATH=/usr/local/cuda-11.1/lib64${LD_LIBRARY_PATH:+:${LD_LIBRARY_PATH}}
+# export PATH=/usr/local/cuda-11.1/bin${PATH:+:${PATH}}
+# export LD_LIBRARY_PATH=/usr/local/cuda-11.1/lib64${LD_LIBRARY_PATH:+:${LD_LIBRARY_PATH}}
 
 # Export WINHOME (useful in WSL)
 export WINHOME=$(wslpath "$(wslvar USERPROFILE)")
