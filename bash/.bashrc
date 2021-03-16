@@ -143,6 +143,7 @@ fi
 
 # aliases
 # alias pycharm="pycharm-community"
+alias watch-nvidia="watch -n 1 nvidia-smi"
 alias jupyter_dark="jt -t onedork -fs 95 -altp -tfs 11 -nfs 115 -cellw 88% -T"
 alias jupyter_light="jt -t grade3 -fs 95 -altp -tfs 11 -nfs 115 -cellw 88% -T"
 
@@ -154,7 +155,7 @@ alias jupyter_light="jt -t grade3 -fs 95 -altp -tfs 11 -nfs 115 -cellw 88% -T"
 # export LD_LIBRARY_PATH=/usr/local/cuda-11.1/lib64${LD_LIBRARY_PATH:+:${LD_LIBRARY_PATH}}
 
 # Export WINHOME (useful in WSL)
-export WINHOME=$(wslpath "$(wslvar USERPROFILE)")
+# export WINHOME=$(wslpath "$(wslvar USERPROFILE)")
 
 # Export Display (useful in WSL)
-export DISPLAY=`grep -oP "(?<=nameserver ).+" /etc/resolv.conf`:0.0
+# export DISPLAY=`grep -oP "(?<=nameserver ).+" /etc/resolv.conf`:0.0

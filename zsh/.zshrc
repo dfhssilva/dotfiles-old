@@ -48,6 +48,8 @@ ZSH_THEME="robbyrussell"
 # ENABLE_CORRECTION="true"
 
 # Uncomment the following line to display red dots whilst waiting for completion.
+# Caution: this setting can cause issues with multiline prompts (zsh 5.7.1 and newer seem to work)
+# See https://github.com/ohmyzsh/ohmyzsh/issues/5765
 # COMPLETION_WAITING_DOTS="true"
 
 # Uncomment the following line if you want to disable marking untracked files
@@ -121,21 +123,21 @@ unset __conda_setup
 # <<< conda initialize <<<
 
 # set PATH so it includes user's private bin if it exists
-# if [ -d "$HOME/bin" ] ; then
-#     PATH="$HOME/bin:$PATH"
-# fi
+if [ -d "$HOME/bin" ] ; then
+    PATH="$HOME/bin:$PATH"
+fi
 
 # set PATH so it includes user's private bin if it exists
-if [ -d "$HOME/.local/bin" ] ; then
-    PATH="$HOME/.local/bin:$PATH"
-fi
+# if [ -d "$HOME/.local/bin" ] ; then
+#     PATH="$HOME/.local/bin:$PATH"
+# fi
 
 # If you come from bash you might have to change your $PATH.
 export PATH="$HOME/bin:/usr/local/bin:$PATH"
 
 # aliases
 # alias pycharm="pycharm-community"
-# alias watch-nvidia="watch -n 1 nvidia-smi"
+alias watch-nvidia="watch -n 1 nvidia-smi"
 
 # add homebrew to path
 # eval $(/home/linuxbrew/.linuxbrew/bin/brew shellenv)
@@ -148,7 +150,7 @@ export PATH="$HOME/bin:/usr/local/bin:$PATH"
 PROMPT="%{$fg[white]%}%n@%{$fg[green]%}%m%{$reset_color%} ${PROMPT}"
 
 # Export WINHOME (useful in WSL)
-export WINHOME=$(wslpath "$(wslvar USERPROFILE)")
+# export WINHOME=$(wslpath "$(wslvar USERPROFILE)")
 
 # Export DISPLAY (useful in WSL)
-export DISPLAY=`grep -oP "(?<=nameserver ).+" /etc/resolv.conf`:0.0
+# export DISPLAY=`grep -oP "(?<=nameserver ).+" /etc/resolv.conf`:0.0
