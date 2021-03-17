@@ -21,3 +21,6 @@
 	name = jupyter notebook merge driver
 [commit]
 	template = /home/davids/.gitmessage
+[credential "https://github.com"]
+	helper = 
+	helper = !/usr/bin/gh auth git-credential

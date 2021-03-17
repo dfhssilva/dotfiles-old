@@ -118,14 +118,14 @@ fi
 
 # >>> conda initialize >>>
 # !! Contents within this block are managed by 'conda init' !!
-__conda_setup="$('/home/davids/miniconda3/bin/conda' 'shell.bash' 'hook' 2> /dev/null)"
+__conda_setup="$("$HOME/miniconda3/bin/conda" 'shell.bash' 'hook' 2> /dev/null)"
 if [ $? -eq 0 ]; then
     eval "$__conda_setup"
 else
-    if [ -f "/home/davids/miniconda3/etc/profile.d/conda.sh" ]; then
-        . "/home/davids/miniconda3/etc/profile.d/conda.sh"
+    if [ -f "$HOME/miniconda3/etc/profile.d/conda.sh" ]; then
+        . "$HOME/miniconda3/etc/profile.d/conda.sh"
     else
-        export PATH="/home/davids/miniconda3/bin:$PATH"
+        export PATH="$HOME/miniconda3/bin:$PATH"
     fi
 fi
 unset __conda_setup
@@ -144,8 +144,8 @@ fi
 # aliases
 # alias pycharm="pycharm-community"
 alias watch-nvidia="watch -n 1 nvidia-smi"
-alias jupyter_dark="jt -t onedork -fs 95 -altp -tfs 11 -nfs 115 -cellw 88% -T"
-alias jupyter_light="jt -t grade3 -fs 95 -altp -tfs 11 -nfs 115 -cellw 88% -T"
+alias jupyter-dark="jt -t onedork -fs 95 -altp -tfs 11 -nfs 115 -cellw 88% -T"
+alias jupyter-light="jt -t grade3 -fs 95 -altp -tfs 11 -nfs 115 -cellw 88% -T"
 
 # add homebrew to path
 # eval $(/home/linuxbrew/.linuxbrew/bin/brew shellenv)
