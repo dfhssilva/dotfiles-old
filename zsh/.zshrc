@@ -101,13 +101,10 @@ source $ZSH/oh-my-zsh.sh
 # users are encouraged to define aliases within the ZSH_CUSTOM folder.
 # For a full list of active aliases, run `alias`.
 #
-# Example aliases
-# alias zshconfig="mate ~/.zshrc"
-# alias ohmyzsh="mate ~/.oh-my-zsh"
-# alias pycharm="pycharm-community"
-alias jupyter-dark="jt -t onedork -fs 95 -tfs 11 -nfs 115 -cellw 88% -T"
-alias jupyter-light="jt -t grade3 -fs 95 -tfs 11 -nfs 115 -cellw 88% -T"
+# Aliases
 alias watch-nvidia="watch -n 1 nvidia-smi"
+alias jupyter-dark="jt -t onedork -fs 95 -altp -tfs 11 -nfs 115 -cellw 88% -T"
+alias jupyter-light="jt -t grade3 -fs 95 -altp -tfs 11 -nfs 115 -cellw 88% -T"
 
 # >>> conda initialize >>>
 # !! Contents within this block are managed by 'conda init' !!
@@ -130,25 +127,13 @@ if [ -d "$HOME/bin" ] ; then
 fi
 
 # set PATH so it includes user's private bin if it exists
-# if [ -d "$HOME/.local/bin" ] ; then
-#     PATH="$HOME/.local/bin:$PATH"
-# fi
+if [ -d "$HOME/.local/bin" ] ; then
+    PATH="$HOME/.local/bin:$PATH"
+fi
 
 # If you come from bash you might have to change your $PATH.
 export PATH="$HOME/bin:/usr/local/bin:$PATH"
 
-# add homebrew to path
-# eval $(/home/linuxbrew/.linuxbrew/bin/brew shellenv)
-
-# cuda toolkit set up
-# export PATH=/usr/local/cuda-11.1/bin${PATH:+:${PATH}}
-# export LD_LIBRARY_PATH=/usr/local/cuda-11.1/lib64${LD_LIBRARY_PATH:+:${LD_LIBRARY_PATH}}
-
 # Prompt configurations
 PROMPT="%{$fg[white]%}%n@%{$fg[green]%}%m%{$reset_color%} ${PROMPT}"
 
-# Export WINHOME (useful in WSL)
-# export WINHOME=$(wslpath "$(wslvar USERPROFILE)")
-
-# Export DISPLAY (useful in WSL)
-# export DISPLAY=`grep -oP "(?<=nameserver ).+" /etc/resolv.conf`:0.0

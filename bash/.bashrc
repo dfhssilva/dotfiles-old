@@ -141,21 +141,8 @@ if [ -d "$HOME/.local/bin" ] ; then
     PATH="$HOME/.local/bin:$PATH"
 fi
 
-# aliases
-# alias pycharm="pycharm-community"
+# Aliases
 alias watch-nvidia="watch -n 1 nvidia-smi"
 alias jupyter-dark="jt -t onedork -fs 95 -altp -tfs 11 -nfs 115 -cellw 88% -T"
 alias jupyter-light="jt -t grade3 -fs 95 -altp -tfs 11 -nfs 115 -cellw 88% -T"
 
-# add homebrew to path
-# eval $(/home/linuxbrew/.linuxbrew/bin/brew shellenv)
-
-# cuda toolkit set up
-# export PATH=/usr/local/cuda-11.1/bin${PATH:+:${PATH}}
-# export LD_LIBRARY_PATH=/usr/local/cuda-11.1/lib64${LD_LIBRARY_PATH:+:${LD_LIBRARY_PATH}}
-
-# Export WINHOME (useful in WSL)
-# export WINHOME=$(wslpath "$(wslvar USERPROFILE)")
-
-# Export Display (useful in WSL)
-# export DISPLAY=`grep -oP "(?<=nameserver ).+" /etc/resolv.conf`:0.0
