@@ -9,5 +9,4 @@ create_default_packages:
   - numpy
   - matplotlib
   - pandas
-  - jupyter_contrib_nbextensions
-auto_activate_base: true
+auto_activate_base: false

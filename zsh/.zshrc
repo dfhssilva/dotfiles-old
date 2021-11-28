@@ -75,6 +75,8 @@ ZSH_THEME="robbyrussell"
 # Add wisely, as too many plugins slow down shell startup.
 plugins=(
     git
+    docker
+    docker-compose
 )
 
 source $ZSH/oh-my-zsh.sh
@@ -103,37 +105,40 @@ source $ZSH/oh-my-zsh.sh
 #
 # Aliases
 alias watch-nvidia="watch -n 1 nvidia-smi"
-alias jupyter-dark="jt -t onedork -fs 95 -altp -tfs 11 -nfs 115 -cellw 88% -T"
-alias jupyter-light="jt -t grade3 -fs 95 -altp -tfs 11 -nfs 115 -cellw 88% -T"
+
+# # set PATH so it includes user's private bin if it exists
+# if [ -d "$HOME/bin" ] ; then
+#     PATH="$HOME/bin:$PATH"
+# fi
+
+# # set PATH so it includes user's private bin if it exists
+# if [ -d "$HOME/.local/bin" ] ; then
+#     PATH="$HOME/.local/bin:$PATH"
+# fi
+
+# # If you come from bash you might have to change your $PATH.
+# export PATH="$HOME/bin:/usr/local/bin:$PATH"
+
+# Prompt configurations
+PROMPT="%{$fg[white]%}%n@%{$fg[green]%}%m%{$reset_color%} ${PROMPT}"
+
+# Set env variables
+VISUAL=/usr/bin/nvim
+EDITOR=/usr/bin/nvim
+TERM=xterm-256color
 
 # >>> conda initialize >>>
 # !! Contents within this block are managed by 'conda init' !!
-__conda_setup="$("$HOME/miniconda3/bin/conda" 'shell.zsh' 'hook' 2> /dev/null)"
+__conda_setup="$('/home/dsilva/miniconda3/bin/conda' 'shell.zsh' 'hook' 2> /dev/null)"
 if [ $? -eq 0 ]; then
     eval "$__conda_setup"
 else
-    if [ -f "$HOME/miniconda3/etc/profile.d/conda.sh" ]; then
-        . "$HOME/miniconda3/etc/profile.d/conda.sh"
+    if [ -f "/home/dsilva/miniconda3/etc/profile.d/conda.sh" ]; then
+        . "/home/dsilva/miniconda3/etc/profile.d/conda.sh"
     else
-        export PATH="$HOME/miniconda3/bin:$PATH"
+        export PATH="/home/dsilva/miniconda3/bin:$PATH"
     fi
 fi
 unset __conda_setup
 # <<< conda initialize <<<
-
-# set PATH so it includes user's private bin if it exists
-if [ -d "$HOME/bin" ] ; then
-    PATH="$HOME/bin:$PATH"
-fi
-
-# set PATH so it includes user's private bin if it exists
-if [ -d "$HOME/.local/bin" ] ; then
-    PATH="$HOME/.local/bin:$PATH"
-fi
-
-# If you come from bash you might have to change your $PATH.
-export PATH="$HOME/bin:/usr/local/bin:$PATH"
-
-# Prompt configurations
-PROMPT="%{$fg[white]%}%n@%{$fg[green]%}%m%{$reset_color%} ${PROMPT}"
 

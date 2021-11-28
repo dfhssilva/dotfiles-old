@@ -4,25 +4,14 @@
 	email = dfhssilva@protonmail.com
 	signingkey = 311A91341292C4AE
 [core]
-	editor = code --wait
-[difftool "nbdime"]
-	cmd = git-nbdifftool diff \"$LOCAL\" \"$REMOTE\" \"$BASE\"
-[difftool]
-	prompt = false
-[mergetool "nbdime"]
-	cmd = git-nbmergetool merge \"$BASE\" \"$LOCAL\" \"$REMOTE\" \"$MERGED\"
-[mergetool]
-	prompt = false
+	editor = /usr/bin/nvim
 [alias]
 	graph = log --graph --oneline --all
-[diff "jupyternotebook"]
-	command = git-nbdiffdriver diff
-[merge "jupyternotebook"]
-	driver = git-nbmergedriver merge %O %A %B %L %P
-	name = jupyter notebook merge driver
 [commit]
 	template = /home/dsilva/.gitmessage
 	gpgsign = true
 [credential "https://github.com"]
 	helper = 
 	helper = !/usr/bin/gh auth git-credential
+[pull]
+	rebase = false
