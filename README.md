@@ -8,6 +8,10 @@ Versioning dotfiles for sync across environments
 1) Clone the repository to your local environment
 2) Use [GNU Stow](https://www.gnu.org/software/stow/) to create the necessary symlinks of each dotfile to $HOME
 
+# NeoVim
+
+The NeoVim dotfiles depend on the [NvChad](https://github.com/NvChad/NvChad) configurations. Follow installation instructions [here](https://nvchad.github.io/getting-started/setup).
+
 # Examples
 Create symlinks for the config files:
 ```bash
