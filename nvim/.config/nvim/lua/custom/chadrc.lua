@@ -8,28 +8,31 @@ M.options, M.ui, M.mappings, M.plugins = {}, {}, {}, {}
 
 --------------------------------------------------------------------
 
--- To use this file, copy the structure of `core/default_config.lua`,
+-- IMPORTANT: To use this file, copy the structure of `core/default_config.lua`,
 -- examples of setting relative number & changing theme:
 
--- M.options = {
---    relativenumber = true,
--- }
+M.options = {
+  -- relativenumber = true,
+  timeoutlen = 1000
+}
 
 M.ui = {
   theme = "nord",
-  hl_override = "custom.highlights"
+  transparency = true,
 }
 
 -- NvChad included plugin options & overrides
 M.plugins = {
    status = {
-      dashboard = true,
+     dashboard = true,
    },
    options = {
-      --   lspconfig = {
-      --    path of file containing setups of different lsps (ex : "custom.plugins.lspconfig"), read the docs for more info
-      --    setup_lspconf = "",
-      --   },
+     statusline = {
+       style = "arrow"
+     },
+     lspconfig = {
+       setup_lspconf = "custom.plugins.lspconfig",
+     },
    },
    -- To change the Packer `config` of a plugin that comes with NvChad,
    -- add a table entry below matching the plugin github name
@@ -37,7 +40,9 @@ M.plugins = {
    -- this string will be called in a `require`
    --              use "(custom.configs).my_func()" to call a function
    --              use "custom.blankline" to call a file
-   default_plugin_config_replace = {},
+   default_plugin_config_replace = {
+     dashboard = "custom.plugins.dashboard"
+   }
 }
 
 return M

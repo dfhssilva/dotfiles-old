@@ -31,12 +31,123 @@ local hooks = require "core.hooks"
 -- see: https://github.com/wbthomason/packer.nvim
 -- examples below:
 
--- hooks.add("install_plugins", function(use)
---    use {
---       "max397574/better-escape.nvim",
---       event = "InsertEnter",
---    }
--- end)
+hooks.add("install_plugins", function(use)
+  use {
+    -- Neoscroll: a smooth scrolling neovim plugin written in lua
+    "karb94/neoscroll.nvim",
+    opt = true,
+    config = function()
+      require("neoscroll").setup()
+    end,
+
+    -- lazy loading
+    setup = function()
+      require("core.utils").packer_lazy_load "neoscroll.nvim"
+    end,
+    
+    -- AutoSave: saving your work before the world collapses
+    "Pocco81/AutoSave.nvim",
+    config = function()
+      local autosave = require "autosave"
+
+      autosave.setup {
+        enabled = true,
+        execution_message = "autosaved at : " .. vim.fn.strftime "%H:%M:%S",
+        events = { "InsertLeave", "TextChanged" },
+        conditions = {
+          exists = true,
+          filetype_is_not = {},
+          modifiable = true,
+        },
+        clean_command_line_interval = 2500,
+        on_off_commands = true,
+        write_all_buffers = false,
+        debounce_delay = 750
+      }
+    end,
+
+    -- TrueZen: clean and elegant distraction-free writing 
+    "Pocco81/TrueZen.nvim",
+    cmd = {
+      "TZAtaraxis",
+      "TZMinimalist",
+      "TZFocus",
+    },
+    config = function()
+       -- check https://github.com/Pocco81/TrueZen.nvim#setup-configuration (init.lua version)
+       local true_zen = require("true-zen")
+
+       true_zen.setup({
+         ui = {
+           bottom = {
+             laststatus = 0,
+             ruler = false,
+             showmode = false,
+             showcmd = false,
+             cmdheight = 1,
+           },
+           top = {
+             showtabline = 0,
+           },
+           left = {
+             number = false,
+             relativenumber = false,
+             signcolumn = "no",
+           },
+         },
+         modes = {
+           ataraxis = {
+             left_padding = 32,
+             right_padding = 32,
+             top_padding = 1,
+             bottom_padding = 1,
+             ideal_writing_area_width = {0},
+             auto_padding = true,
+             keep_default_fold_fillchars = true,
+             custom_bg = {"none", ""},
+             bg_configuration = true,
+             quit = "untoggle",
+             ignore_floating_windows = true,
+             affected_higroups = {
+               NonText = true,
+               FoldColumn = true,
+               ColorColumn = true,
+               VertSplit = true,
+               StatusLine = true,
+               StatusLineNC = true,
+               SignColumn = true,
+             },
+           },
+           focus = {
+             margin_of_error = 5,
+             focus_method = "experimental"
+           },
+         },
+         integrations = {
+           vim_gitgutter = false,
+           galaxyline = false,
+           tmux = true,
+           gitsigns = false,
+           vim_bufferline = false,
+           limelight = false,
+           twilight = false,
+           vim_airline = false,
+           vim_powerline = false,
+           vim_signify = false,
+           express_line = false,
+           lualine = false,
+           lightline = false,
+           feline = false
+         },
+         misc = {
+           on_off_commands = false,
+           ui_elements_commands = false,
+           cursor_by_mode = false,
+         }
+       })
+    end
+   }
+end)
 
 -- alternatively, put this in a sub-folder like "lua/custom/plugins/mkdir"
 -- then source it with
