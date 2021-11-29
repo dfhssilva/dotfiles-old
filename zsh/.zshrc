@@ -119,6 +119,9 @@ alias watch-nvidia="watch -n 1 nvidia-smi"
 # # If you come from bash you might have to change your $PATH.
 # export PATH="$HOME/bin:/usr/local/bin:$PATH"
 
+# Include .node_modules/bin in path
+export PATH="$HOME/.node_modules/bin:$PATH"
+
 # Prompt configurations
 PROMPT="%{$fg[white]%}%n@%{$fg[green]%}%m%{$reset_color%} ${PROMPT}"
 
