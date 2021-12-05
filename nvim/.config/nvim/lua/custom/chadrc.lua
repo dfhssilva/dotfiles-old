@@ -41,7 +41,8 @@ M.plugins = {
    --              use "(custom.configs).my_func()" to call a function
    --              use "custom.blankline" to call a file
    default_plugin_config_replace = {
-     dashboard = "custom.plugins.dashboard"
+     dashboard = "custom.plugins.dashboard",
+     gitsigns = "custom.plugins.gitsigns"
    }
 }
 
