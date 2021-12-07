@@ -17,8 +17,14 @@ M.options = {
 }
 
 M.ui = {
-  theme = "nord",
+  theme = "onenord",
   transparency = true,
+}
+
+M.mappings.plugins = {
+  comment = {
+    toggle = "<leader>º"
+  }
 }
 
 -- NvChad included plugin options & overrides
