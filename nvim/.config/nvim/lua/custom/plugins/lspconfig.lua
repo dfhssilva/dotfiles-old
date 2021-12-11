@@ -1,5 +1,4 @@
 local M = {}
-
 M.setup_lsp = function(attach, capabilities)
    local lspconfig = require "lspconfig"
 
@@ -34,7 +33,7 @@ M.setup_lsp = function(attach, capabilities)
       debounce_text_changes = 150,
     },
     settings = {
-      latex = {
+      texlab = {
         build = {
           args = { '%f', '--keep-logs', '--keep-intermediates' },
           executable = '/usr/bin/tectonic',
