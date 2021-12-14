@@ -18,7 +18,7 @@ M.options = {
 
 M.ui = {
   theme = "onenord",
-  transparency = true,
+  -- transparency = true,
 }
 
 M.mappings.plugins = {
