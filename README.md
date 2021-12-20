@@ -12,6 +12,10 @@ Versioning dotfiles for sync across environments
 
 The NeoVim dotfiles depend on the [NvChad](https://github.com/NvChad/NvChad) configurations. Follow installation instructions [here](https://nvchad.github.io/getting-started/setup).
 
+# Miscellaneous
+
+The misc folder contains miscellaneous dotfiles such as KDE shortcuts.
+
 # Examples
 Create symlinks for the config files:
 ```bash
