@@ -77,11 +77,23 @@ plugins=(
     git
     docker
     docker-compose
+    vi-mode
 )
 
 source $ZSH/oh-my-zsh.sh
 
 # User configuration
+# vi-mode settings
+VI_MODE_RESET_PROMPT_ON_MODE_CHANGE=true
+VI_MODE_SET_CURSOR=true
+
+# Use vi mode
+bindkey -v
+
+# Configure autosuggestions plugin
+source $ZSH/zsh-autosuggestions.zsh
+bindkey '^ ' autosuggest-accept
+bindkey '^x' autosuggest-clear
 
 # export MANPATH="/usr/local/man:$MANPATH"
 
