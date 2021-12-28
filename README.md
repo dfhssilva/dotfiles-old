@@ -8,13 +8,15 @@ Versioning dotfiles for sync across environments
 1) Clone the repository to your local environment
 2) Use [GNU Stow](https://www.gnu.org/software/stow/) to create the necessary symlinks of each dotfile to $HOME
 
-# NeoVim
-
-The NeoVim dotfiles depend on the [NvChad](https://github.com/NvChad/NvChad) configurations. Follow installation instructions [here](https://nvchad.github.io/getting-started/setup).
-
 # Miscellaneous
 
 The misc folder contains miscellaneous dotfiles such as KDE shortcuts.
+
+# Referencing Git Repositories
+Third-party repositories are referenced using Git Subtrees. The main advantage is that users can access the nested repositories by only cloning this repository. On the other hand, updating subtrees needs to be done individually using a command like:
+```bash
+git subtree pull --prefix nvim/.config/nvim/ https://github.com/NvChad/NvChad.git main --squash
+```
 
 # Examples
 Create symlinks for the config files:
