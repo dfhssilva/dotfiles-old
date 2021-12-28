@@ -10,3 +10,4 @@ create_default_packages:
   - matplotlib
   - pandas
 auto_activate_base: false
+changeps1: false  # necessary for hiding in-parenthesis env name in prompt when using the agnoster theme in zsh

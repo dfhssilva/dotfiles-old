@@ -8,7 +8,8 @@ export ZSH="$HOME/.oh-my-zsh"
 # load a random theme each time oh-my-zsh is loaded, in which case,
 # to know which specific one was loaded, run: echo $RANDOM_THEME
 # See https://github.com/ohmyzsh/ohmyzsh/wiki/Themes
-ZSH_THEME="robbyrussell"
+ZSH_THEME="agnoster"
+DEFAULT_USER="dsilva"  # hide the “user@hostname” info when you’re logged in
 # POWERLEVEL9K_MODE="nerdfont-complete"
 # POWERLEVEL9K_LEFT_PROMPT_ELEMENTS=()
 
@@ -74,7 +75,7 @@ ZSH_THEME="robbyrussell"
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
 plugins=(
-    git
+    zsh-autosuggestions
     docker
     docker-compose
     vi-mode
@@ -90,8 +91,7 @@ VI_MODE_SET_CURSOR=true
 # Use vi mode
 bindkey -v
 
-# Configure autosuggestions plugin
-source $ZSH/zsh-autosuggestions.zsh
+# Configure autosuggestions bindkeys
 bindkey '^ ' autosuggest-accept
 bindkey '^x' autosuggest-clear
 
@@ -127,12 +127,6 @@ fi
 if [ -d "$HOME/.local/bin" ] ; then
     PATH="$HOME/.local/bin:$PATH"
 fi
-
-# # If you come from bash you might have to change your $PATH.
-# export PATH="$HOME/bin:/usr/local/bin:$PATH"
-
-# Prompt configurations
-PROMPT="%{$fg[white]%}%n@%{$fg[green]%}%m%{$reset_color%} ${PROMPT}"
 
 # Set env variables
 VISUAL=/usr/bin/nvim
