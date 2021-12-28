@@ -8,7 +8,7 @@ export ZSH="$HOME/.oh-my-zsh"
 # load a random theme each time oh-my-zsh is loaded, in which case,
 # to know which specific one was loaded, run: echo $RANDOM_THEME
 # See https://github.com/ohmyzsh/ohmyzsh/wiki/Themes
-ZSH_THEME="agnoster"
+ZSH_THEME="agnoster-zsh-theme/agnoster"
 DEFAULT_USER="dsilva"  # hide the “user@hostname” info when you’re logged in
 # POWERLEVEL9K_MODE="nerdfont-complete"
 # POWERLEVEL9K_LEFT_PROMPT_ELEMENTS=()
