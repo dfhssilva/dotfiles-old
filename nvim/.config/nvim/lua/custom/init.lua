@@ -33,122 +33,40 @@ local hooks = require "core.hooks"
 
 hooks.add("install_plugins", function(use)
   use {
-    -- Neoscroll: a smooth scrolling neovim plugin written in lua
-    "karb94/neoscroll.nvim",
-    opt = true,
-    config = function()
-      require("neoscroll").setup()
-    end,
-
-    -- lazy loading
-    setup = function()
-      require("core.utils").packer_lazy_load "neoscroll.nvim"
-    end,
-    
     -- AutoSave: saving your work before the world collapses
     "Pocco81/AutoSave.nvim",
+    -- lazy loading
+    setup = function()
+      require("core.utils").packer_lazy_load "AutoSave.nvim"
+    end,
+
     config = function()
       local autosave = require "autosave"
 
       autosave.setup {
         enabled = true,
-        execution_message = "autosaved at : " .. vim.fn.strftime "%H:%M:%S",
+        execution_message = "saved at : " .. vim.fn.strftime("%H:%M:%S"),
         events = { "InsertLeave", "TextChanged" },
         conditions = {
           exists = true,
+          filename_is_not = {},
           filetype_is_not = {},
           modifiable = true,
         },
         clean_command_line_interval = 2500,
-        on_off_commands = true,
+        on_off_commands = false,
         write_all_buffers = false,
-        debounce_delay = 750
+        debounce_delay = 250
       }
     end,
 
---     -- TrueZen: clean and elegant distraction-free writing 
---     "Pocco81/TrueZen.nvim",
---     cmd = {
---       "TZAtaraxis",
---       "TZMinimalist",
---       "TZFocus",
---     },
---     config = function()
---        -- check https://github.com/Pocco81/TrueZen.nvim#setup-configuration (init.lua version)
---        local true_zen = require("true-zen")
--- 
---        true_zen.setup({
---          ui = {
---            bottom = {
---              laststatus = 0,
---              ruler = false,
---              showmode = false,
---              showcmd = false,
---              cmdheight = 1,
---            },
---            top = {
---              showtabline = 0,
---            },
---            left = {
---              number = false,
---              relativenumber = false,
---              signcolumn = "no",
---            },
---          },
---          modes = {
---            ataraxis = {
---              left_padding = 32,
---              right_padding = 32,
---              top_padding = 1,
---              bottom_padding = 1,
---              ideal_writing_area_width = {0},
---              auto_padding = true,
---              keep_default_fold_fillchars = true,
---              custom_bg = {"none", ""},
---              bg_configuration = true,
---              quit = "untoggle",
---              ignore_floating_windows = true,
---              affected_higroups = {
---                NonText = true,
---                FoldColumn = true,
---                ColorColumn = true,
---                VertSplit = true,
---                StatusLine = true,
---                StatusLineNC = true,
---                SignColumn = true,
---              },
---            },
---            focus = {
---              margin_of_error = 5,
---              focus_method = "experimental"
---            },
---          },
---          integrations = {
---            vim_gitgutter = false,
---            galaxyline = false,
---            tmux = true,
---            gitsigns = false,
---            vim_bufferline = false,
---            limelight = false,
---            twilight = false,
---            vim_airline = false,
---            vim_powerline = false,
---            vim_signify = false,
---            express_line = false,
---            lualine = false,
---            lightline = false,
---            feline = false
---          },
---          misc = {
---            on_off_commands = false,
---            ui_elements_commands = false,
---            cursor_by_mode = false,
---          }
---        })
---     end,
---     
     -- LSP-installer: allows you to seamlessly manage LSP servers locally
     "williamboman/nvim-lsp-installer",
+    -- lazy loading
+    setup = function()
+      require("core.utils").packer_lazy_load "nvim-lsp-installer"
+    end,
+
     config = function()
       local lsp_installer = require "nvim-lsp-installer"
       
@@ -169,7 +87,14 @@ hooks.add("install_plugins", function(use)
         vim.cmd [[ do User LspAttachBuffers ]]
       end)
     end,
-   }
+    
+    -- A glow preview directly in your neovim buffer.
+    "ellisonleao/glow.nvim"
+    -- lazy loading
+    -- setup = function()
+    --   require("core.utils").packer_lazy_load "glow.nvim"
+    -- end
+  }
 end)
 
 -- alternatively, put this in a sub-folder like "lua/custom/plugins/mkdir"
