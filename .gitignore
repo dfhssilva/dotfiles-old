@@ -1,2 +1,3 @@
 gh/.config/gh/hosts.yml
 gh/.config/gh/state.yml
+tmux/.tmux/resurrect
