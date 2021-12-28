@@ -30,3 +30,5 @@ stow conda  # conda config symlinks
 [Move your dotfiles to version control](https://opensource.com/article/19/3/move-your-dotfiles-version-control)
 
 [Using GNU Stow to manage your dotfiles](http://brandon.invergo.net/news/2012-05-26-using-gnu-stow-to-manage-your-dotfiles.html)
+
+[Referencing One Git Repository from Another](https://www.pluralsight.com/guides/reference-one-git-repository-from-another)
