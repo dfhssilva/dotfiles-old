@@ -76,6 +76,7 @@ DEFAULT_USER="dsilva"  # hide the “user@hostname” info when you’re logged 
 # Add wisely, as too many plugins slow down shell startup.
 plugins=(
     zsh-autosuggestions
+    zsh-syntax-highlighting
     docker
     docker-compose
     vi-mode
