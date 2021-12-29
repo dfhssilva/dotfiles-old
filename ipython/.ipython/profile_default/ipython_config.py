@@ -1,6 +1,71 @@
-# Configuration file for ipython.
+"""
+    Configuration file for ipython.
+    Author: David Silva, dfhssilva@protonmail.com
+"""
 import sys
 from prompt_toolkit.key_binding.vi_state import InputMode, ViState
+from pygments.style import Style
+from pygments.token import Keyword, Name, Comment, String, Error, \
+    Number, Operator, Generic, Punctuation, Token, Whitespace
+
+
+class NordStyle(Style):
+    """
+    This style mimics the Nord Theme color scheme.
+    """
+    background_color = '#2e3440'
+    default = '#d8dee9'
+
+    styles = {
+        Whitespace:                 '#d8dee9',
+        Punctuation:                '#eceff4',
+
+        Comment:                    'italic #616e87',
+        Comment.Preproc:            '#5e81ac',
+
+        Keyword:                    'bold #81a1c1',
+        Keyword.Pseudo:             'nobold #81a1c1',
+        Keyword.Type:               'nobold #81a1c1',
+
+        Operator:                   'bold #81a1c1',
+        Operator.Word:              'bold #81a1c1',
+
+        Name:                       '#d8dee9',
+        Name.Builtin:               '#81a1c1',
+        Name.Function:              '#88c0d0',
+        Name.Class:                 '#8fbcbb',
+        Name.Namespace:             '#8fbcbb',
+        Name.Exception:             '#bf616a',
+        Name.Variable:              '#d8dee9',
+        Name.Constant:              '#8fbcbb',
+        Name.Entity:                '#d08770',
+        Name.Attribute:             '#8fbcbb',
+        Name.Tag:                   '#81a1c1',
+        Name.Decorator:             '#d08770',
+
+        String:                     '#a3be8c',
+        String.Doc:                 '#616e87',
+        String.Interpol:            '#a3be8c',
+        String.Escape:              '#ebcb8b',
+        String.Regex:               '#ebcb8b',
+        String.Symbol:              '#a3be8c',
+        String.Other:               '#a3be8c',
+
+        Number:                     '#b48ead',
+
+        Generic.Heading:            'bold #88c0d0',
+        Generic.Subheading:         'bold #88c0d0',
+        Generic.Deleted:            '#bf616a',
+        Generic.Inserted:           '#a3be8c',
+        Generic.Error:              '#bf616a',
+        Generic.Emph:               'italic',
+        Generic.Strong:             'bold',
+        Generic.Prompt:             'bold #4c566a',
+        Generic.Output:             '#d8dee9',
+        Generic.Traceback:          '#bf616a',
+
+        Error:                      '#bf616a'
+    }
 
 #------------------------------------------------------------------------------
 # InteractiveShellApp(Configurable) configuration
@@ -558,7 +623,10 @@ from prompt_toolkit.key_binding.vi_state import InputMode, ViState
 # c.TerminalInteractiveShell.display_page = False
 
 
+# Vi mode configuration
+# -----------------------------------------------------------------------------
 def get_input_mode(self):
+    "Get vim mode"
     if sys.version_info[0] == 3:
         from prompt_toolkit.application.current import get_app
 
@@ -572,6 +640,7 @@ def get_input_mode(self):
 
 
 def set_input_mode(self, mode):
+    "Write vim mode to terminal"
     shape = {InputMode.NAVIGATION: 2, InputMode.REPLACE: 4}.get(mode, 6)
     cursor = "\x1b[{} q".format(shape)
 
@@ -623,11 +692,14 @@ c.TerminalInteractiveShell.editing_mode = "vi"
 ## The name or class of a Pygments style to use for syntax
 #          highlighting. To see available styles, run `pygmentize -L styles`.
 #  Default: traitlets.Undefined
-# c.TerminalInteractiveShell.highlighting_style = traitlets.Undefined
+c.TerminalInteractiveShell.highlighting_style = NordStyle
 
 ## Override highlighting format for specific tokens
 #  Default: {}
-# c.TerminalInteractiveShell.highlighting_style_overrides = {}
+c.TerminalInteractiveShell.highlighting_style_overrides = {
+    Token.Prompt: '#A3BE8C',
+    Token.PromptNum: '#BF616A',
+}
 
 ## Total length of command history
 #  See also: InteractiveShell.history_length
@@ -750,7 +822,7 @@ c.TerminalInteractiveShell.editing_mode = "vi"
 #  terminal supports true color, the following command should print 'TRUECOLOR'
 #  in orange: printf "\x1b[38;2;255;100;0mTRUECOLOR\x1b[0m\n"
 #  Default: False
-# c.TerminalInteractiveShell.true_color = False
+c.TerminalInteractiveShell.true_color = True
 
 #  See also: InteractiveShell.wildcards_case_sensitive
 # c.TerminalInteractiveShell.wildcards_case_sensitive = True
