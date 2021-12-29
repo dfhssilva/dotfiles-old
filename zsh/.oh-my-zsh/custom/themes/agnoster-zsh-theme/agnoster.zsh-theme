@@ -25,7 +25,6 @@
 ### Segments of the prompt, default order declaration
 
 typeset -aHg AGNOSTER_PROMPT_SEGMENTS=(
-    prompt_custom
     prompt_status
     prompt_context
     prompt_virtualenv
@@ -181,8 +180,3 @@ prompt_agnoster_setup() {
 }
 
 prompt_agnoster_setup "$@"
-
-# Customization
-prompt_custom() {
-  prompt_segment magenta $PRIMARY_FG ' ⚡'
-}
