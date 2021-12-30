@@ -1,0 +1,4 @@
+! Set keymappings to "greater than" and "less than"
+keycode 60 = period colon period colon greater division greater
+keycode 59 = comma semicolon comma semicolon less multiply less multiply comma semicolon less multiply
+
