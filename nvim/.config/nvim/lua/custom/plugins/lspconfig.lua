@@ -1,10 +1,11 @@
 local M = {}
 M.setup_lsp = function(attach, capabilities)
    local lspconfig = require "lspconfig"
+   local lsp_server_path = "~/.local/share/nvim/lsp_servers/"
 
    -- pyright server configuration
    lspconfig.pyright.setup {
-     cmd = { "/home/dsilva/.local/share/nvim/lsp_servers/python/node_modules/pyright/langserver.index.js", "--stdio" }, 
+     cmd = { lsp_server_path .. "python" },
      on_attach = attach,
      capabilities = capabilities,
      flags = {
@@ -22,17 +23,27 @@ M.setup_lsp = function(attach, capabilities)
 
    -- dockerls server configuration
    lspconfig.dockerls.setup {
-     cmd = { "/home/dsilva/.local/share/nvim/lsp_servers/dockerfile/node_modules/dockerfile-language-server-nodejs/bin/docker-langserver", "--stdio" },
+     cmd = { lsp_server_path .. "dockerfile" },
      on_attach = attach,
      capabilities = capabilities,
      flags = {
        debounce_text_changes = 150,
      },
    }
-  
+
    -- ltex server configuration
    lspconfig.ltex.setup {
-     cmd = { "/home/dsilva/.local/share/nvim/lsp_servers/ltex/ltex-ls-15.2.0/bin/ltex-ls" },
+     cmd = { lsp_server_path .. "ltex" },
+     on_attach = attach,
+     capabilities = capabilities,
+     flags = {
+       debounce_text_changes = 150,
+     },
+   }
+
+   -- sumneko_lua server configuration
+   lspconfig.sumneko_lua.setup {
+     cmd = { lsp_server_path .. "sumneko_lua" },
      on_attach = attach,
      capabilities = capabilities,
      flags = {
@@ -42,7 +53,7 @@ M.setup_lsp = function(attach, capabilities)
 
    -- texlab server configuration
    lspconfig.texlab.setup {
-    cmd = { "/home/dsilva/.local/share/nvim/lsp_servers/latex/texlab" },
+    cmd = { lsp_server_path .. "latex" },
     on_attach = attach,
     capabilities = capabilities,
     flags = {
