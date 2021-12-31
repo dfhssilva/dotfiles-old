@@ -699,6 +699,8 @@ c.TerminalInteractiveShell.highlighting_style = NordStyle
 c.TerminalInteractiveShell.highlighting_style_overrides = {
     Token.Prompt: '#A3BE8C',
     Token.PromptNum: '#BF616A',
+    Token.OutPrompt: '#BF616A',
+    Token.OutPromptNum: '#D08770'
 }
 
 ## Total length of command history
