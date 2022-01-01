@@ -22,7 +22,22 @@ M.ui = {
 M.mappings.plugins = {
   comment = {
     toggle = "<leader>º"
-  }
+  },
+  telescope = {
+    buffers = "<leader>fb",
+    find_files = "<leader>ff",
+    find_hiddenfiles = "<leader>fa",
+    git_commits = "<leader>cm",
+    git_status = "<leader>gt",
+    help_tags = "<leader>fh",
+    live_grep = "<leader>fw",
+    oldfiles = "<leader>fr",
+    themes = "<leader>th", -- NvChad theme picker
+
+    telescope_media = {
+       media_files = "<leader>fp",
+    },
+  },
 }
 
 -- NvChad included plugin options & overrides

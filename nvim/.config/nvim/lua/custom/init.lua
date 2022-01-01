@@ -91,6 +91,11 @@ hooks.add("install_plugins", function(use)
         -- Tell Neorg what modules to load
         load = {
           ["core.defaults"] = {}, -- Load all the default modules
+          ["core.keybinds"] = { -- Configure core.keybinds
+            config = {
+              default_keybinds = true, -- Generate the default keybinds
+            }
+          },
           ["core.norg.concealer"] = {}, -- Allows for use of icons
           ["core.norg.dirman"] = { -- Manage your directories with Neorg
             config = {
@@ -98,15 +103,20 @@ hooks.add("install_plugins", function(use)
                 my_workspace = "~/neorg"
               }
             }
-          }
+          },
+          ["core.integrations.telescope"] = {}, -- Enable the telescope module
         }
       }
     end,
-    requires = "nvim-lua/plenary.nvim"
+    requires = { "nvim-lua/plenary.nvim", "nvim-neorg/neorg-telescope" },
     -- No lazy-load: "Neorg practically lazy loads itself - only a few lines of code are
     -- run on startup, these lines check whether the current extension is .norg, if it's
     -- not then nothing else loads"
   }
+end)
+
+hooks.add("setup_mappings", function(map)
+   map("n", "<leader>fo", ":NeorgStart <CR>") -- Launch Neorg with key combination
 end)
 
 -- alternatively, put this in a sub-folder like "lua/custom/plugins/mkdir"
