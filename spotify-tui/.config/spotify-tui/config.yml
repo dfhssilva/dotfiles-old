@@ -42,6 +42,8 @@ behavior:
   set_window_title: true
 
 keybindings:
+  jump_to_start: "g"
+  jump_to_end: "G"
 #   # Key stroke can be used if it only uses two keys:
 #   # ctrl-q works,
 #   # ctrl-alt-q doesn't.
