@@ -12,13 +12,11 @@ M.options, M.ui, M.mappings, M.plugins = {}, {}, {}, {}
 -- examples of setting relative number & changing theme:
 
 M.options = {
-  -- relativenumber = true,
   timeoutlen = 1000
 }
 
 M.ui = {
   theme = "onenord",
-  -- transparency = true,
 }
 
 M.mappings.plugins = {
@@ -28,6 +26,12 @@ M.mappings.plugins = {
 }
 
 -- NvChad included plugin options & overrides
+-- To change the Packer `config` of a plugin that comes with NvChad,
+-- add a table entry below matching the plugin github name
+--              '-' -> '_', remove any '.lua', '.nvim' extensions
+-- this string will be called in a `require`
+--              use "(custom.configs).my_func()" to call a function
+--              use "custom.blankline" to call a file
 M.plugins = {
    status = {
      dashboard = true,
@@ -40,15 +44,11 @@ M.plugins = {
        setup_lspconf = "custom.plugins.lspconfig",
      },
    },
-   -- To change the Packer `config` of a plugin that comes with NvChad,
-   -- add a table entry below matching the plugin github name
-   --              '-' -> '_', remove any '.lua', '.nvim' extensions
-   -- this string will be called in a `require`
-   --              use "(custom.configs).my_func()" to call a function
-   --              use "custom.blankline" to call a file
    default_plugin_config_replace = {
      dashboard = "custom.plugins.dashboard",
-     gitsigns = "custom.plugins.gitsigns"
+     gitsigns = "custom.plugins.gitsigns",
+     nvim_treesitter = "custom.plugins.treesitter",
+     nvim_cmp = "custom.plugins.cmp"
    }
 }
 
