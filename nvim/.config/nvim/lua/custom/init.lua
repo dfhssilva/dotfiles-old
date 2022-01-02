@@ -100,8 +100,15 @@ hooks.add("install_plugins", function(use)
           ["core.norg.dirman"] = { -- Manage your directories with Neorg
             config = {
               workspaces = {
-                my_workspace = "~/neorg"
+                work = "~/neorg/work",
+                personal = "~/neorg/personal",
+                gtd = "~/neorg/gtd"
               }
+            }
+          },
+          ["core.gtd.base"] = {  -- Add "Getting Things Done" methodology support
+            config = {
+              workspace = 'gtd'
             }
           },
           ["core.integrations.telescope"] = {}, -- Enable the telescope module
