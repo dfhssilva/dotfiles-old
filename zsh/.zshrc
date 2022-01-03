@@ -1,3 +1,16 @@
+# Enable Powerlevel10k instant prompt. Should stay close to the top of ~/.zshrc.
+# Initialization code that may require console input (password prompts, [y/n]
+# confirmations, etc.) must go above this block; everything else may go below.
+if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]; then
+  source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
+fi
+
+# Source external plugins
+source /usr/share/zsh/plugins/zsh-autosuggestions/zsh-autosuggestions.plugin.zsh
+
+# Source external theme
+source /usr/share/zsh-theme-powerlevel10k/powerlevel10k.zsh-theme
+
 # If you come from bash you might have to change your $PATH.
 # export PATH=$HOME/bin:/usr/local/bin:$PATH
 
@@ -8,7 +21,7 @@ export ZSH="$HOME/.oh-my-zsh"
 # load a random theme each time oh-my-zsh is loaded, in which case,
 # to know which specific one was loaded, run: echo $RANDOM_THEME
 # See https://github.com/ohmyzsh/ohmyzsh/wiki/Themes
-ZSH_THEME="agnoster-zsh-theme/agnoster"
+# ZSH_THEME="robbyrussell"
 DEFAULT_USER="dsilva"  # hide the “user@hostname” info when you’re logged in
 # POWERLEVEL9K_MODE="nerdfont-complete"
 # POWERLEVEL9K_LEFT_PROMPT_ELEMENTS=()
@@ -74,13 +87,16 @@ DEFAULT_USER="dsilva"  # hide the “user@hostname” info when you’re logged 
 # Custom plugins may be added to $ZSH_CUSTOM/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
+
+# Set plugins
 plugins=(
-    zsh-autosuggestions
-    zsh-syntax-highlighting
     docker
     docker-compose
     vi-mode
 )
+
+# Source zsh-syntax-highlighting ("z-sy-h must be sourced after anything else that adds hooks that modify the command-line buffer" - https://github.com/zsh-users/zsh-syntax-highlighting#why-must-zsh-syntax-highlightingzsh-be-sourced-at-the-end-of-the-zshrc-file)
+source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.plugin.zsh
 
 source $ZSH/oh-my-zsh.sh
 
@@ -88,13 +104,12 @@ source $ZSH/oh-my-zsh.sh
 # vi-mode settings
 VI_MODE_RESET_PROMPT_ON_MODE_CHANGE=true
 VI_MODE_SET_CURSOR=true
-
 # Use vi mode
 bindkey -v
 
 # Configure autosuggestions bindkeys
-bindkey '^ ' autosuggest-accept
-bindkey '^x' autosuggest-clear
+bindkey '^ ' autosuggest-accept  # ctrl + space
+bindkey '^x' autosuggest-clear  # ctrl + x
 
 # export MANPATH="/usr/local/man:$MANPATH"
 
@@ -149,3 +164,5 @@ fi
 unset __conda_setup
 # <<< conda initialize <<<
 
+# To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
+[[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
