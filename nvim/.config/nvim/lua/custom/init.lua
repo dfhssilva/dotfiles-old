@@ -120,6 +120,11 @@ hooks.add("install_plugins", function(use)
     -- run on startup, these lines check whether the current extension is .norg, if it's
     -- not then nothing else loads"
   }
+
+  use {
+    "luukvbaal/stabilize.nvim",
+    config = function() require("stabilize").setup() end
+  }
 end)
 
 hooks.add("setup_mappings", function(map)

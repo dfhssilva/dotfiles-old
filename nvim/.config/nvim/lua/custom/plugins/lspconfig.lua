@@ -33,7 +33,7 @@ M.setup_lsp = function(attach, capabilities)
 
    -- ltex server configuration
    lspconfig.ltex.setup {
-     cmd = { lsp_server_path .. "ltex" },
+     cmd = { lsp_server_path .. "ltex/ltex-ls" },
      on_attach = attach,
      capabilities = capabilities,
      flags = {
@@ -53,7 +53,7 @@ M.setup_lsp = function(attach, capabilities)
 
    -- texlab server configuration
    lspconfig.texlab.setup {
-    cmd = { lsp_server_path .. "latex" },
+    cmd = { lsp_server_path .. "latex/texlab" },
     on_attach = attach,
     capabilities = capabilities,
     flags = {
