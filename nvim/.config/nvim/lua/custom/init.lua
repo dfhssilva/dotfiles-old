@@ -1,37 +1,15 @@
 -- This is where your custom modules and plugins go.
--- See the wiki for a guide on how to extend NvChad
-
-local hooks = require "core.hooks"
-
--- NOTE: To use this, make a copy with `cp example_init.lua init.lua`
+-- Please check NvChad docs if you're totally new to nvchad + dont know lua!!
 
 --------------------------------------------------------------------
 
--- To modify packaged plugin configs, use the overrides functionality
--- if the override does not exist in the plugin config, make or request a PR,
--- or you can override the whole plugin config with 'chadrc' -> M.plugins.default_plugin_config_replace{}
--- this will run your config instead of the NvChad config for the given plugin
-
--- hooks.override("lsp", "publish_diagnostics", function(current)
---   current.virtual_text = false;
---   return current;
--- end)
-
--- To add new mappings, use the "setup_mappings" hook,
--- you can set one or many mappings
--- example below:
-
--- hooks.add("setup_mappings", function(map)
---    map("n", "<leader>cc", "gg0vG$d", opt) -- example to delete the buffer
---    .... many more mappings ....
--- end)
-
--- To add new plugins, use the "install_plugin" hook,
--- NOTE: we heavily suggest using Packer's lazy loading (with the 'event' field)
+-- NOTE: we heavily suggest using Packer's lazy loading (with the 'event', 'cmd' fields)
 -- see: https://github.com/wbthomason/packer.nvim
--- examples below:
+-- https://nvchad.github.io/config/walkthrough
 
-hooks.add("install_plugins", function(use)
+-- PLUGINS
+local customPlugins = require "core.customPlugins"
+customPlugins.add(function(use)
   use {
     -- AutoSave: saving your work before the world collapses
     "Pocco81/AutoSave.nvim",
@@ -100,15 +78,17 @@ hooks.add("install_plugins", function(use)
           ["core.norg.dirman"] = { -- Manage your directories with Neorg
             config = {
               workspaces = {
-                work = "~/neorg/work",
-                personal = "~/neorg/personal",
+                notes = "~/neorg/notes",
                 gtd = "~/neorg/gtd"
               }
             }
           },
           ["core.gtd.base"] = {  -- Add "Getting Things Done" methodology support
             config = {
-              workspace = 'gtd'
+              workspace = 'gtd',
+              default_lists = {
+                inbox = "inbox.norg",
+              }
             }
           },
           ["core.integrations.telescope"] = {}, -- Enable the telescope module
@@ -127,30 +107,26 @@ hooks.add("install_plugins", function(use)
   }
 end)
 
-hooks.add("setup_mappings", function(map)
-   map("n", "<leader>fo", ":NeorgStart <CR>") -- Launch Neorg with key combination
-   -- Set lspconfig mapping because of bug happening where keybinds wouldn't load
-   map("n", "gD", "<cmd>lua vim.lsp.buf.declaration()<CR>")
-   map("n", "gd", "<cmd>lua vim.lsp.buf.definition()<CR>")
-   map("n", "K", "<cmd>lua vim.lsp.buf.hover()<CR>")
-   map("n", "gi", "<cmd>lua vim.lsp.buf.implementation()<CR>")
-   map("n", "gk", "<cmd>lua vim.lsp.buf.signature_help()<CR>")
-   map("n", "<leader>wa", "<cmd>lua vim.lsp.buf.add_workspace_folder()<CR>")
-   map("n", "<leader>wr", "<cmd>lua vim.lsp.buf.remove_workspace_folder()<CR>")
-   map("n", "<leader>wl", "<cmd>lua print(vim.inspect(vim.lsp.buf.list_workspace_folders()))<CR>")
-   map("n", "<leader>D", "<cmd>lua vim.lsp.buf.type_definition()<CR>")
-   map("n", "<leader>rn", "<cmd>lua vim.lsp.buf.rename()<CR>")
-   map("n", "<leader>ca", "<cmd>lua vim.lsp.buf.code_action()<CR>")
-   map("n", "gr", "<cmd>lua vim.lsp.buf.references()<CR>")
-   map("n", "ge", "<cmd>lua vim.diagnostic.open_float()<CR>")
-   map("n", "[d", "<cmd>lua vim.diagnostic.goto_prev()<CR>")
-   map("n", "]d", "<cmd>lua vim.diagnostic.goto_next()<CR>")
-   map("n", "<leader>q", "<cmd>lua vim.diagnostic.setloclist()<CR>")
-   map("n", "<leader>fm", "<cmd>lua vim.lsp.buf.formatting()<CR>")
-end)
+-- MAPPINGS
+local map = require("core.utils").map
 
--- alternatively, put this in a sub-folder like "lua/custom/plugins/mkdir"
--- then source it with
-
--- require "custom.plugins.mkdir"
-
+-- Launch Neorg with key combination
+map("n", "<leader>fo", ":NeorgStart <CR>")
+-- Set lspconfig mapping because of bug happening where keybinds wouldn't load
+map("n", "gD", "<cmd>lua vim.lsp.buf.declaration()<CR>")
+map("n", "gd", "<cmd>lua vim.lsp.buf.definition()<CR>")
+map("n", "K", "<cmd>lua vim.lsp.buf.hover()<CR>")
+map("n", "gi", "<cmd>lua vim.lsp.buf.implementation()<CR>")
+map("n", "gk", "<cmd>lua vim.lsp.buf.signature_help()<CR>")
+map("n", "<leader>wa", "<cmd>lua vim.lsp.buf.add_workspace_folder()<CR>")
+map("n", "<leader>wr", "<cmd>lua vim.lsp.buf.remove_workspace_folder()<CR>")
+map("n", "<leader>wl", "<cmd>lua print(vim.inspect(vim.lsp.buf.list_workspace_folders()))<CR>")
+map("n", "<leader>D", "<cmd>lua vim.lsp.buf.type_definition()<CR>")
+map("n", "<leader>rn", "<cmd>lua vim.lsp.buf.rename()<CR>")
+map("n", "<leader>ca", "<cmd>lua vim.lsp.buf.code_action()<CR>")
+map("n", "gr", "<cmd>lua vim.lsp.buf.references()<CR>")
+map("n", "ge", "<cmd>lua vim.diagnostic.open_float()<CR>")
+map("n", "[d", "<cmd>lua vim.diagnostic.goto_prev()<CR>")
+map("n", "]d", "<cmd>lua vim.diagnostic.goto_next()<CR>")
+map("n", "<leader>q", "<cmd>lua vim.diagnostic.setloclist()<CR>")
+map("n", "<leader>fm", "<cmd>lua vim.lsp.buf.formatting()<CR>")

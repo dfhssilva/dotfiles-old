@@ -31,15 +31,15 @@ M.setup_lsp = function(attach, capabilities)
      },
    }
 
-   -- ltex server configuration
-   lspconfig.ltex.setup {
-     cmd = { lsp_server_path .. "ltex/ltex-ls" },
-     on_attach = attach,
-     capabilities = capabilities,
-     flags = {
-       debounce_text_changes = 150,
-     },
-   }
+   -- -- grammarly server configuration
+   -- lspconfig.grammarly.setup {
+   --   cmd = { lsp_server_path .. "grammarly" },
+   --   on_attach = attach,
+   --   capabilities = capabilities,
+   --   flags = {
+   --     debounce_text_changes = 150,
+   --   },
+   -- }
 
    -- sumneko_lua server configuration
    lspconfig.sumneko_lua.setup {
