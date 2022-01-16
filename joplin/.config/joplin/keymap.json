@@ -6,7 +6,7 @@
   { "keys": ["j"], "type": "function", "command": "move_down" },
   { "keys": ["CTRL_K"], "type": "function", "command": "page_up" },
   { "keys": ["CTRL_J"], "type": "function", "command": "page_down" },
-  { "keys": ["i"], "type": "function", "command": "activate" },
+  { "keys": ["ENTER"], "type": "function", "command": "activate" },
   { "keys": ["d"], "type": "function", "command": "delete" },
   { "keys": [" "], "command": "todo toggle $n" },
   { "keys": ["n"], "type": "function", "command": "next_link" },

@@ -108,7 +108,7 @@ VI_MODE_SET_CURSOR=true
 bindkey -v
 
 # Configure autosuggestions bindkeys
-bindkey '^ ' autosuggest-accept  # ctrl + space
+bindkey '^f' autosuggest-accept  # ctrl + f
 bindkey '^x' autosuggest-clear  # ctrl + x
 
 # export MANPATH="/usr/local/man:$MANPATH"
