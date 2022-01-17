@@ -7,6 +7,9 @@
 -- see: https://github.com/wbthomason/packer.nvim
 -- https://nvchad.github.io/config/walkthrough
 
+-- Set maplocalleader to "," instead of the "\" default
+vim.g.maplocalleader = ','
+
 -- PLUGINS
 local customPlugins = require "core.customPlugins"
 customPlugins.add(function(use)
@@ -54,64 +57,32 @@ customPlugins.add(function(use)
   }
 
   use {
-    -- A glow preview directly in your neovim buffer
+    -- Glow-nvim: A glow preview directly in your neovim buffer
     "ellisonleao/glow.nvim",
     opt = true,
     ft = {'markdown', 'mdown', 'mkdn', 'md', 'mkd', 'mdwn', 'mdtxt', 'mdtext', 'text', 'Rmd'}
   }
 
   use {
-    -- Neorg - An Organized Future
-    "nvim-neorg/neorg",
-    after = "nvim-treesitter",
-    config = function()
-      require('neorg').setup {
-        -- Tell Neorg what modules to load
-        load = {
-          ["core.defaults"] = {}, -- Load all the default modules
-          ["core.keybinds"] = { -- Configure core.keybinds
-            config = {
-              default_keybinds = true, -- Generate the default keybinds
-            }
-          },
-          ["core.norg.concealer"] = {}, -- Allows for use of icons
-          ["core.norg.dirman"] = { -- Manage your directories with Neorg
-            config = {
-              workspaces = {
-                notes = "~/neorg/notes",
-                gtd = "~/neorg/gtd"
-              }
-            }
-          },
-          ["core.gtd.base"] = {  -- Add "Getting Things Done" methodology support
-            config = {
-              workspace = 'gtd',
-              default_lists = {
-                inbox = "inbox.norg",
-              }
-            }
-          },
-          ["core.integrations.telescope"] = {}, -- Enable the telescope module
-        }
-      }
-    end,
-    requires = { "nvim-lua/plenary.nvim", "nvim-neorg/neorg-telescope" },
-    -- No lazy-load: "Neorg practically lazy loads itself - only a few lines of code are
-    -- run on startup, these lines check whether the current extension is .norg, if it's
-    -- not then nothing else loads"
+    -- Stabilize: a plugin to stabilize window open/close events
+    "luukvbaal/stabilize.nvim",
+    config = function() require("stabilize").setup() end
   }
 
   use {
-    "luukvbaal/stabilize.nvim",
-    config = function() require("stabilize").setup() end
+    -- Todo.txt: a Vim plugin for Todo.txt
+    "freitass/todo.txt-vim"
   }
 end)
 
 -- MAPPINGS
 local map = require("core.utils").map
 
--- Launch Neorg with key combination
-map("n", "<leader>fo", ":NeorgStart <CR>")
+-- Launch todo.txt file with key combination
+-- TODO: use relative instead of absolute paths here (maybe set an env variable)
+local todo_file = "/home/dsilva/Nextcloud/Todotxt/todo.txt"
+map("n", "<leader>t", string.format(":edit %s<CR>", todo_file))
+
 -- Set lspconfig mapping because of bug happening where keybinds wouldn't load
 map("n", "gD", "<cmd>lua vim.lsp.buf.declaration()<CR>")
 map("n", "gd", "<cmd>lua vim.lsp.buf.definition()<CR>")
