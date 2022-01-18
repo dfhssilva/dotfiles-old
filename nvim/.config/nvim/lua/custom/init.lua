@@ -79,8 +79,8 @@ end)
 local map = require("core.utils").map
 
 -- Launch todo.txt file with key combination
--- TODO: use relative instead of absolute paths here (maybe set an env variable)
-local todo_file = "/home/dsilva/Nextcloud/Todotxt/todo.txt"
+local handle = io.popen('source $TODOTXT_CFG_FILE; echo $TODO_DIR/todo.txt')
+local todo_file = handle:read("*a"); handle:close()
 map("n", "<leader>t", string.format(":edit %s<CR>", todo_file))
 
 -- Set lspconfig mapping because of bug happening where keybinds wouldn't load
