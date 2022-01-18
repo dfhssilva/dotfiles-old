@@ -47,6 +47,10 @@ M.plugins = {
      lspconfig = {
        setup_lspconf = "custom.plugins.lspconfig",
      },
+     luasnip = {
+       snippet_path = {"~/.config/nvim/lua/custom/snippets/"},
+       -- Check https://github.com/rafamadriz/friendly-snippets for how to write vscode formatted snippets
+     },
    },
    default_plugin_config_replace = {
      dashboard = "custom.plugins.dashboard",

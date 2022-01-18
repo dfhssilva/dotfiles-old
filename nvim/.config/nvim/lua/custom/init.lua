@@ -57,13 +57,6 @@ customPlugins.add(function(use)
   }
 
   use {
-    -- Glow-nvim: A glow preview directly in your neovim buffer
-    "ellisonleao/glow.nvim",
-    opt = true,
-    ft = {'markdown', 'mdown', 'mkdn', 'md', 'mkd', 'mdwn', 'mdtxt', 'mdtext', 'text', 'Rmd'}
-  }
-
-  use {
     -- Stabilize: a plugin to stabilize window open/close events
     "luukvbaal/stabilize.nvim",
     config = function() require("stabilize").setup() end
