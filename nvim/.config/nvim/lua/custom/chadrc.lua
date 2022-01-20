@@ -12,12 +12,18 @@ M.options, M.ui, M.mappings, M.plugins = {}, {}, {}, {}
 -- examples of setting relative number & changing theme:
 
 M.options = {
-  timeoutlen = 1000,
-  relativenumber = true
+  timeoutlen = 1000
 }
 
 M.ui = {
   theme = "onenord",
+}
+
+M.mappings = {
+  terminal = {
+    -- get out of terminal mode
+    esc_termmode = { "<leader>jk", "<leader><ESC>" },
+  }
 }
 
 M.mappings.plugins = {
