@@ -22,7 +22,10 @@ M.ui = {
 M.mappings = {
   terminal = {
     -- get out of terminal mode
-    esc_termmode = { "<leader>jk", "<leader><ESC>" },
+    esc_termmode = { "JK" },
+
+    -- get out of terminal mode and hide it
+    esc_hide_termmode = { "H" }
   }
 }
 
