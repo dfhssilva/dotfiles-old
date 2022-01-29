@@ -25,7 +25,7 @@ M.mappings = {
     esc_termmode = { "JK" },
 
     -- get out of terminal mode and hide it
-    esc_hide_termmode = { "H" }
+    esc_hide_termmode = { }
   }
 }
 
