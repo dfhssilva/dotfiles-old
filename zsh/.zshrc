@@ -130,7 +130,10 @@ bindkey '^x' autosuggest-clear  # ctrl + x
 # plugins, and themes. Aliases can be placed here, though oh-my-zsh
 # users are encouraged to define aliases within the ZSH_CUSTOM folder.
 # For a full list of active aliases, run `alias`.
-#
+
+# Swap capslock and escape keys
+setxkbmap -option caps:ctrl_modifier
+
 # Aliases
 alias watch-nvidia="watch -n 1 nvidia-smi"
 alias todo='todo.sh'

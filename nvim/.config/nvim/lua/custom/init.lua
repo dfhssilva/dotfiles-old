@@ -66,6 +66,11 @@ customPlugins.add(function(use)
     -- Todo.txt: a Vim plugin for Todo.txt
     "freitass/todo.txt-vim"
   }
+
+  use {
+    -- capslock.vim: Software caps lock
+    "tpope/vim-capslock"
+  }
 end)
 
 -- MAPPINGS
