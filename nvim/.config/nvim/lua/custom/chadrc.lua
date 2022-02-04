@@ -45,7 +45,11 @@ M.mappings.plugins = {
 -- this string will be called in a `require`
 --              use "(custom.configs).my_func()" to call a function
 --              use "custom.blankline" to call a file
+-- Install plugins
+local userPlugins = require "custom.plugins"
+
 M.plugins = {
+   install = userPlugins,
    status = {
      dashboard = true,
    },
