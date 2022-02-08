@@ -6,10 +6,7 @@ if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]
 fi
 
 # Source external plugins
-source /usr/share/zsh/plugins/zsh-autosuggestions/zsh-autosuggestions.plugin.zsh
-
-# Source external theme
-source /usr/share/zsh-theme-powerlevel10k/powerlevel10k.zsh-theme
+source /usr/share/zsh-autosuggestions/zsh-autosuggestions.plugin.zsh
 
 # If you come from bash you might have to change your $PATH.
 # export PATH=$HOME/bin:/usr/local/bin:$PATH
@@ -21,7 +18,7 @@ export ZSH="$HOME/.oh-my-zsh"
 # load a random theme each time oh-my-zsh is loaded, in which case,
 # to know which specific one was loaded, run: echo $RANDOM_THEME
 # See https://github.com/ohmyzsh/ohmyzsh/wiki/Themes
-# ZSH_THEME="robbyrussell"
+ZSH_THEME="powerlevel10k/powerlevel10k"
 DEFAULT_USER="dsilva"  # hide the “user@hostname” info when you’re logged in
 # POWERLEVEL9K_MODE="nerdfont-complete"
 # POWERLEVEL9K_LEFT_PROMPT_ELEMENTS=()
@@ -96,7 +93,7 @@ plugins=(
 )
 
 # Source zsh-syntax-highlighting ("z-sy-h must be sourced after anything else that adds hooks that modify the command-line buffer" - https://github.com/zsh-users/zsh-syntax-highlighting#why-must-zsh-syntax-highlightingzsh-be-sourced-at-the-end-of-the-zshrc-file)
-source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.plugin.zsh
+source /usr/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 
 source $ZSH/oh-my-zsh.sh
 
@@ -110,6 +107,9 @@ bindkey -v
 # Configure autosuggestions bindkeys
 bindkey '^f' autosuggest-accept  # ctrl + f
 bindkey '^x' autosuggest-clear  # ctrl + x
+
+# Active nord dircolors
+test -r "~/.dir_colors" && eval $(dircolors ~/.dir_colors)
 
 # export MANPATH="/usr/local/man:$MANPATH"
 
@@ -132,8 +132,7 @@ bindkey '^x' autosuggest-clear  # ctrl + x
 # For a full list of active aliases, run `alias`.
 
 # Aliases
-alias watch-nvidia="watch -n 1 nvidia-smi"
-alias todo='todo.sh'
+alias vim='nvim.appimage'
 
 # set PATH so it includes user's private bin if it exists
 if [ -d "$HOME/bin" ] ; then
@@ -146,11 +145,10 @@ if [ -d "$HOME/.local/bin" ] ; then
 fi
 
 # Set env variables
-export VISUAL=/usr/bin/nvim
-export EDITOR=/usr/bin/nvim
+export VISUAL=$HOME/bin/nvim.appimage
+export EDITOR=$HOME/bin/nvim.appimage
 export TERM=xterm-256color
-export TODOTXT_CFG_FILE=$HOME/.config/todo/todo.cfg
-export TODOTXT_DEFAULT_ACTION=ls
+export WH=/mnt/c/Users/dsilva
 
 # >>> conda initialize >>>
 # !! Contents within this block are managed by 'conda init' !!

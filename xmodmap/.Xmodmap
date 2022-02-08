@@ -1,8 +1,0 @@
-! Set keymappings to "greater than" and "less than"
-keycode 60 = period colon period colon greater division greater
-keycode 59 = comma semicolon comma semicolon less multiply less multiply comma semicolon less multiply
-! Set capslock to ctrl
-clear lock
-clear control
-keycode 66 = Control_L
-add control = Control_L Control_R
