@@ -1,74 +1,55 @@
 local M = {}
+
 M.setup_lsp = function(attach, capabilities)
-   local lspconfig = require "lspconfig"
-   local lsp_server_path = "~/.local/share/nvim/lsp_servers/"
+   local lsp_installer = require "nvim-lsp-installer"
 
-   -- pyright server configuration
-   lspconfig.pyright.setup {
-     cmd = { lsp_server_path .. "python" },
-     on_attach = attach,
-     capabilities = capabilities,
-     flags = {
-       debounce_text_changes = 150,
-     },
-     settings = {
-       python = {
-         analysis = {
-           useLibraryCodeForTypes = true
+   lsp_installer.settings {
+      ui = {
+         icons = {
+            server_installed = "﫟" ,
+            server_pending = "",
+            server_uninstalled = "✗",
          },
-         venvPath = "/home/dsilva/miniconda3/envs"
-       }
-     }
+      },
    }
 
-   -- dockerls server configuration
-   lspconfig.dockerls.setup {
-     cmd = { lsp_server_path .. "dockerfile" },
-     on_attach = attach,
-     capabilities = capabilities,
-     flags = {
-       debounce_text_changes = 150,
-     },
-   }
+   lsp_installer.on_server_ready(function(server)
+      local opts = {
+         on_attach = attach,
+         capabilities = capabilities,
+         flags = {
+            debounce_text_changes = 150,
+         },
+         settings = {},
+      }
 
-   -- -- grammarly server configuration
-   -- lspconfig.grammarly.setup {
-   --   cmd = { lsp_server_path .. "grammarly" },
-   --   on_attach = attach,
-   --   capabilities = capabilities,
-   --   flags = {
-   --     debounce_text_changes = 150,
-   --   },
-   -- }
-
-   -- sumneko_lua server configuration
-   lspconfig.sumneko_lua.setup {
-     cmd = { lsp_server_path .. "sumneko_lua" },
-     on_attach = attach,
-     capabilities = capabilities,
-     flags = {
-       debounce_text_changes = 150,
-     },
-   }
-
-   -- texlab server configuration
-   lspconfig.texlab.setup {
-    cmd = { lsp_server_path .. "latex/texlab" },
-    on_attach = attach,
-    capabilities = capabilities,
-    flags = {
-      debounce_text_changes = 150,
-    },
-    settings = {
-      texlab = {
-        build = {
-          args = { '%f', '--keep-logs', '--keep-intermediates' },
-          executable = '/usr/bin/tectonic',
+      -- configure pyright
+      if server.name == 'pyright' then
+        opts.settings = {
+          python = {
+            analysis = {
+              useLibraryCodeForTypes = true
+            },
+            venvPath = "/home/dsilva/miniconda3/envs"
           }
         }
-      }
-    }
+      end
 
+      -- configure texlab
+      if server.name == 'texlab' then
+        opts.settings = {
+          texlab = {
+            build = {
+              args = { '%f', '--keep-logs', '--keep-intermediates' },
+              executable = '/usr/bin/tectonic',
+            }
+          }
+        }
+      end
+
+      server:setup(opts)
+      vim.cmd [[ do User LspAttachBuffers ]]
+   end)
 end
 
 return M
