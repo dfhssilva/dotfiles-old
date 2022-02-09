@@ -111,6 +111,9 @@ bindkey -v
 bindkey '^f' autosuggest-accept  # ctrl + f
 bindkey '^x' autosuggest-clear  # ctrl + x
 
+# Activate nord dircolors
+test -r "~/.dir_colors" && eval $(dircolors ~/.dir_colors)
+
 # export MANPATH="/usr/local/man:$MANPATH"
 
 # You may need to manually set your language environment
