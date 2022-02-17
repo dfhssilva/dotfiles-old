@@ -90,6 +90,7 @@ plugins=(
     docker
     docker-compose
     vi-mode
+    gcloud
 )
 
 # Source zsh-syntax-highlighting ("z-sy-h must be sourced after anything else that adds hooks that modify the command-line buffer" - https://github.com/zsh-users/zsh-syntax-highlighting#why-must-zsh-syntax-highlightingzsh-be-sourced-at-the-end-of-the-zshrc-file)
@@ -150,6 +151,7 @@ export VISUAL=$HOME/bin/nvim.appimage
 export EDITOR=$HOME/bin/nvim.appimage
 export TERM=xterm-256color
 export WH=/mnt/c/Users/dsilva
+export GOOGLE_APPLICATION_CREDENTIALS=$HOME/gcloud_keys.json
 
 # >>> conda initialize >>>
 # !! Contents within this block are managed by 'conda init' !!
