@@ -48,10 +48,6 @@ return {
     config = function() require("stabilize").setup() end
   },
   {
-    -- Todo.txt: a Vim plugin for Todo.txt
-    "freitass/todo.txt-vim"
-  },
-  {
     -- capslock.vim: Software caps lock
     "tpope/vim-capslock"
   }
