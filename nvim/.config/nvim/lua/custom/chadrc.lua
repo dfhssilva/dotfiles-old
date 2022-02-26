@@ -51,7 +51,7 @@ local userPlugins = require "custom.plugins"
 M.plugins = {
    install = userPlugins,
    status = {
-     dashboard = true,
+     alpha = true,
    },
    options = {
      statusline = {
@@ -66,7 +66,7 @@ M.plugins = {
      },
    },
    default_plugin_config_replace = {
-     dashboard = "custom.plugins.dashboard",
+     alpha = "custom.plugins.alpha",
      gitsigns = "custom.plugins.gitsigns",
    }
 }
