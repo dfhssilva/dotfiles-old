@@ -35,18 +35,6 @@ M.setup_lsp = function(attach, capabilities)
         }
       end
 
-      -- configure texlab
-      if server.name == 'texlab' then
-        opts.settings = {
-          texlab = {
-            build = {
-              args = { '%f', '--keep-logs', '--keep-intermediates' },
-              executable = '/usr/bin/tectonic',
-            }
-          }
-        }
-      end
-
       server:setup(opts)
       vim.cmd [[ do User LspAttachBuffers ]]
    end)
