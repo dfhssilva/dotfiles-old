@@ -136,7 +136,6 @@ test -r "~/.dir_colors" && eval $(dircolors ~/.dir_colors)
 
 # Aliases
 alias watch-nvidia="watch -n 1 nvidia-smi"
-alias todo='todo.sh'
 alias tlmgr='/usr/share/texmf-dist/scripts/texlive/tlmgr.pl --usermode'
 
 # set PATH so it includes user's private bin if it exists
@@ -153,8 +152,6 @@ fi
 export VISUAL=/usr/bin/nvim
 export EDITOR=/usr/bin/nvim
 export TERM=xterm-256color
-export TODOTXT_CFG_FILE=$HOME/.config/todo/todo.cfg
-export TODOTXT_DEFAULT_ACTION=ls
 
 # >>> conda initialize >>>
 # !! Contents within this block are managed by 'conda init' !!
