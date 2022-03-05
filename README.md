@@ -1,3 +1,6 @@
+# Archived - new dotfiles repo at [github.com/dfhssilva/dotfiles](https://github.com/dfhssilva/dotfiles)
+---
+
 # dotfiles
 dfhssilva's dotfiles
 
